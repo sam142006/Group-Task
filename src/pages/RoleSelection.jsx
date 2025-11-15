@@ -6,7 +6,7 @@ import boy from "../assets/boy.png";
 import men from "../assets/men.png";
 import infosys from "../assets/infosys.png";
 import amazon from "../assets/amazon.png";
-import google from "../assets/google.png";
+import googlename from "../assets/googlename.png";
 import microsoft from "../assets/microsoft.png";
 import accenture from "../assets/accenture.png";
 
@@ -31,10 +31,10 @@ export default function RoleSelection() {
             <img src={infosys} className="absolute top-0 left-[15%] w-24" alt="infosys" />
             <img src={amazon} className="absolute top-[10%] right-[20%] w-24" alt="amazon" />
             <img src={microsoft} className="absolute top-[40%] left-[0%] w-24" alt="microsoft" />
-            <img src={google} className="absolute top-[45%] right-[0%] w-24" alt="google" />
+            <img src={googlename} className="absolute top-[45%] right-[0%] w-24" alt="google" />
             <img src={accenture} className="absolute bottom-[5%] left-[35%] w-24" alt="accenture" />
 
-            <img src={boy} className="w-[350px] z-10" alt="boy illustration" />
+            <img src={boy} className="w-[250px] z-10" alt="boy illustration" />
           </div>
 
           <div className="w-[480px] bg-[#F6F8FB] rounded-2xl margin:10 p-10 shadow-lg hover:shadow-2xl transition-all">

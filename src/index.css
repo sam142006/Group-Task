@@ -31,11 +31,13 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  width: 100%;
+  min-width: 100%;
+  padding: 0;
+  display: block !important;
+  overflow-x: hidden;
 }
+
 
 h1 {
   font-size: 3.2em;

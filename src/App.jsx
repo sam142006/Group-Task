@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Intro from "./pages/Intro";
+import PromotionPage from "./pages/PromotionPage";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import RoleSelection from "./pages/RoleSelection";
@@ -22,6 +23,7 @@ function App() {
       <Routes>
       
         <Route path="/" element={<Intro />} />
+         <Route path="/promotion" element={<PromotionPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/select-role" element={<RoleSelection />} />

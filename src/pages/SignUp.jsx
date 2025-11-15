@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import logo from "../assets/logo.png";
@@ -6,41 +6,85 @@ import left from "../assets/left.png";
 import right from "../assets/right.png";
 import google from "../assets/google.png";
 
-export default function SignUp() {
+export default function SignUp(){
   const navigate = useNavigate();
 
-  const handleSignup = () => {
-    const data = {
-      full_name: document.querySelectorAll("input")[0].value,
-      email: document.querySelectorAll("input")[1].value,
-      password: document.querySelectorAll("input")[2].value,
-      password2: document.querySelectorAll("input")[3].value,
-    };
+  const [full_name, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  
+  const [agree, setAgree] = useState(false);
 
-    fetch("https://jobseeker-backend-django.onrender.com/auth/signup/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        if (data.token && data.refresh) {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("refresh", data.refresh);
-          navigate("/role-selection");
-          console.log("Signed up successfully!");
+ const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSignup = async () => {
+    setErrorMsg("");
+
+    if (!full_name || !email || !password || !password2) {
+      setErrorMsg("All fields are required.");
+      return;
+    }
+
+    if (password !== password2) {
+      setErrorMsg("Passwords do not match.");
+      return;
+    }
+
+    if (!agree) {
+      setErrorMsg("Please accept the terms and services.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://jobseeker-backend-django.onrender.com/auth/signup/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            full_name: full_name,
+            email: email,
+            password: password,
+            password2: password2,
+           
+          })
         }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      );
+
+      const data = await response.json();
+      console.log(data);
+
+      if (!response.ok) {
+        setErrorMsg(data.error || data.detail || "Signup failed. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      
+      const accessToken = data.token || data.access || data.access_token;
+
+      if (accessToken && data.refresh) {
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("refresh", data.refresh);
+        navigate("/role-selection");
+      } else {
+        setErrorMsg(data.error || data.detail || "Signup succeeded but no tokens were returned.");
+        setLoading(false);
+        return;
+      }
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+    }
+
+    setLoading(false);
   };
 
   const handleLoginClick = () => {
-    navigate("/login"); 
+    navigate("/login");
   };
 
   return (
@@ -63,21 +107,35 @@ export default function SignUp() {
           Sign Up
         </h2>
 
+        {errorMsg && (
+          <p className="text-red-500 text-center mb-2 text-sm">{errorMsg}</p>
+        )}
+
         <div className="space-y-3 px-[6px]">
           <div>
             <label className="text-[#202430] text-sm">Full Name</label>
-            <input className="w-full border-b border-[#D6DDEB] bg-transparent text-black mt-[3px] pb-[3px] outline-none" />
+            <input
+              value={full_name}
+              onChange={(e) => setFullName(e.target.value)}
+              className="w-full border-b border-[#D6DDEB] bg-transparent text-black mt-[3px] pb-[3px] outline-none"
+            />
           </div>
 
           <div>
             <label className="text-[#202430] text-sm">Email</label>
-            <input className="w-full border-b border-[#D6DDEB] bg-transparent text-black mt-[3px] pb-[3px] outline-none" />
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border-b border-[#D6DDEB] bg-transparent text-black mt-[3px] pb-[3px] outline-none"
+            />
           </div>
 
           <div>
             <label className="text-[#202430] text-sm">Password</label>
             <input
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full border-b border-[#D6DDEB] bg-transparent text-black mt-[3px] pb-[3px] outline-none"
             />
           </div>
@@ -86,12 +144,20 @@ export default function SignUp() {
             <label className="text-[#202430] text-sm">Confirm Password</label>
             <input
               type="password"
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
               className="w-full border-b border-[#D6DDEB] bg-transparent text-black mt-[3px] pb-[3px] outline-none"
             />
           </div>
+          
 
           <div className="flex items-center gap-2 mt-[2px]">
-            <input type="checkbox" className="w-4 h-4 accent-[#15294B]" />
+            <input
+              type="checkbox"
+              checked={agree}
+              onChange={(e) => setAgree(e.target.checked)}
+              className="w-4 h-4 accent-[#15294B]"
+            />
             <p className="text-[#202430] text-xs">
               I have read and agree to the{" "}
               <span className="text-[#6B8BAD]">terms and services</span>
@@ -100,9 +166,14 @@ export default function SignUp() {
 
           <button
             onClick={handleSignup}
-            className="w-full bg-[#15294B] text-white py-2 rounded-md text-base hover:bg-white hover:text-[#15294B]"
+            disabled={loading}
+            className={`w-full py-2 rounded-md text-base ${
+              loading
+                ? "bg-gray-400 text-white"
+                : "bg-[#15294B] text-white hover:bg-white hover:text-[#15294B]"
+            }`}
           >
-            Get Started
+            {loading ? "Processing..." : "Get Started"}
           </button>
 
           <div className="flex items-center gap-2">
