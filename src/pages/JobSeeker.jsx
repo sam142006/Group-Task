@@ -4,82 +4,75 @@ import Footer from "../components/Footer";
 
 import bg from "../assets/bg.png";
 import users from "../assets/users.png";
-import search from "../assets/search.png";
-import job from "../assets/job.png";
+import jobs from "../assets/job.png";
+import building from "../assets/building.png";
 
 export default function JobSeeker() {
   return (
-    <div className="bg-[#EBEDF0] text-[#202430] font-sans flex flex-col min-h-screen overflow-x-hidden">
-      
+    <div className="bg-white text-[#202430] font-sans min-h-screen overflow-x-hidden">
       <Navbar />
 
       <div
-        className="w-full h-[70vh] bg-cover bg-center flex items-center justify-center text-white relative"
-        style={{ backgroundImage: `url(${bg})` }}
+        className="relative w-full min-h-[100vh] bg-cover bg-center flex flex-col items-center justify-center text-white"
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
-        <div className="text-center px-4">
-          <h1 className="text-5xl font-bold drop-shadow-lg">
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+        <div className="relative z-10 text-center px-4 mt-16">
+          <h1 className="text-6xl font-bold drop-shadow-lg">
             Find Your Dream Job Today!
           </h1>
-          <p className="mt-3 text-lg drop-shadow-sm">
+
+          <p className="text-lg mt-4 drop-shadow-md">
             Connecting Talent with Opportunity: Your Gateway to Career Success
           </p>
 
-          <div className="mt-8 bg-white text-black rounded-2xl shadow-xl flex items-center px-4 py-3 max-w-4xl mx-auto">
-            
+          <div className="mt-10 bg-white rounded-2xl shadow-lg flex items-center justify-between w-[900px] max-w-full mx-auto py-4 px-6 gap-4">
             <input
               type="text"
               placeholder="Job Title or Company"
-              className="w-full outline-none px-3"
+              className="w-1/3 border p-3 rounded-lg outline-none"
             />
 
-            <div className="border-r h-6 mx-3"></div>
+            <select className="w-1/4 border p-3 rounded-lg outline-none">
+              <option>Select Location</option>
+            </select>
 
-            <input
-              type="text"
-              placeholder="Select Location"
-              className="w-full outline-none px-3"
-            />
+            <select className="w-1/4 border p-3 rounded-lg outline-none">
+              <option>Select Category</option>
+            </select>
 
-            <div className="border-r h-6 mx-3"></div>
-
-            <input
-              type="text"
-              placeholder="Select Category"
-              className="w-full outline-none px-3"
-            />
-
-            <button className="ml-4 bg-[#182A56] text-white px-6 py-3 rounded-xl flex items-center gap-2">
-              <img src={search} alt="search" className="w-5" />
+            <button className="bg-[#182A56] text-white px-6 py-3 rounded-xl font-semibold">
               Search Job
             </button>
-
           </div>
         </div>
-      </div>
 
-      <div className="bg-white py-10 px-6 -mt-10 rounded-t-3xl shadow-lg max-w-5xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-
-          <div className="flex flex-col items-center">
-            <img src={job} alt="jobs" className="w-10 mb-2" />
-            <h2 className="text-xl font-bold">25,850</h2>
-            <p className="text-gray-500">Jobs</p>
+        <div className="relative z-10 flex justify-center gap-24 mt-20">
+          <div className="flex flex-col items-center text-white">
+            <img src={jobs} className="w-16 invert drop-shadow-lg" />
+            <h2 className="text-3xl font-bold mt-2">25,850</h2>
+            <p>Jobs</p>
           </div>
 
-          <div className="flex flex-col items-center">
-            <img src={users} alt="users" className="w-10 mb-2" />
-            <h2 className="text-xl font-bold">10,250</h2>
-            <p className="text-gray-500">Candidates</p>
+          <div className="flex flex-col items-center text-white">
+            <img src={users} className="w-16 invert drop-shadow-lg" />
+            <h2 className="text-3xl font-bold mt-2">10,250</h2>
+            <p>Candidates</p>
           </div>
 
-          <div className="flex flex-col items-center">
-            <img src={job} alt="companies" className="w-10 mb-2" />
-            <h2 className="text-xl font-bold">18,400</h2>
-            <p className="text-gray-500">Companies</p>
+          <div className="flex flex-col items-center text-white">
+            <img src={building} className="w-16 invert drop-shadow-lg" />
+            <h2 className="text-3xl font-bold mt-2">18,400</h2>
+            <p>Companies</p>
           </div>
-
         </div>
+
       </div>
 
       <Footer />

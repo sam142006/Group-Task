@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import logo from "../assets/logo.png";
 import searchIcon from "../assets/search.png";
 import micIcon from "../assets/mic.png";
@@ -11,6 +13,20 @@ import arrowDownIcon from "../assets/arrow-down.png";
 import userIcon from "../assets/user.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  // get role from localStorage
+  const role = localStorage.getItem("role");
+
+  // profile click navigation
+  const goToProfile = () => {
+    if (role === "recruiter") {
+      navigate("/recruiter-profile");
+    } else {
+      navigate("/jobseeker-profile");
+    }
+  };
+
   return (
     <nav className="w-full bg-[#EBEDF0] border-b border-[#D9D9D9] flex items-center justify-between px-5 py-2 shadow-sm">
       <div className="flex items-center gap-2">
@@ -31,23 +47,28 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-3">
-  <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition">
-    <img src={homeIcon} alt="Home" className="w-4 h-4" />
-    <span className="text-[#15294B] font-medium font-['Poppins']">Home</span>
-  </button>
+        <button
+          onClick={() => navigate("/")}
+          className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition"
+        >
+          <img src={homeIcon} alt="Home" className="w-4 h-4" />
+          <span className="text-[#15294B] font-medium font-['Poppins']">Home</span>
+        </button>
 
-  <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition relative">
-    <img src={chatIcon} alt="Chats" className="w-4 h-4" />
-    <span className="text-[#15294B] font-medium font-['Poppins']">Chats</span>
-    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-1 rounded-full">2</span>
-  </button>
+        <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition relative">
+          <img src={chatIcon} alt="Chats" className="w-4 h-4" />
+          <span className="text-[#15294B] font-medium font-['Poppins']">Chats</span>
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-1 rounded-full">2</span>
+        </button>
 
-  <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition">
-    <img src={jobIcon} alt="Jobs" className="w-4 h-4" />
-    <span className="text-[#15294B] font-medium font-['Poppins']">Jobs</span>
-  </button>
-</div>
-
+        <button
+          onClick={() => navigate("/jobs")}
+          className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition"
+        >
+          <img src={jobIcon} alt="Jobs" className="w-4 h-4" />
+          <span className="text-[#15294B] font-medium font-['Poppins']">Jobs</span>
+        </button>
+      </div>
 
       <div className="flex items-center gap-4">
         <img src={bellIcon} alt="Notification" className="w-5 h-5 cursor-pointer" />
@@ -57,7 +78,11 @@ const Navbar = () => {
           <img src={arrowDownIcon} alt="Dropdown" className="w-3 h-3 ml-1 opacity-80" />
         </div>
 
-        <div className="bg-[#15294B] w-8 h-8 rounded-md flex items-center justify-center shadow-sm">
+        {/* PROFILE NAVIGATION */}
+        <div
+          onClick={goToProfile}
+          className="bg-[#15294B] w-8 h-8 rounded-md flex items-center justify-center shadow-sm cursor-pointer"
+        >
           <img src={userIcon} alt="User" className="w-5 h-5 object-contain" />
         </div>
       </div>
