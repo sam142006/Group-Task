@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 
 import bg from "../assets/bg.png";
 import users from "../assets/users-green.png";
@@ -27,10 +29,15 @@ import tcs from "../assets/tcs.png";
 import microsoft from "../assets/microsoft.png";
 
 export default function JobGiver() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-white text-[#202430] font-sans min-h-screen overflow-x-hidden">
 
-      <Navbar />
+      <Navbar
+  onHomeClick={() => navigate("/jobgiverhome")}
+  onProfileClick={() => navigate("/jobgiverprofile")}
+/>
 
       <div
         className="w-full h-[85vh] bg-cover bg-center flex items-center justify-center text-white relative"

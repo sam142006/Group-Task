@@ -4,10 +4,10 @@ import Footer from "../components/Footer";
 
 export default function JobGiverProfile() {
   return (
-    <div className="bg-[#F2F4F7] min-h-screen text-[#202430] font-sans">
+    <div className="bg-white min-h-screen text-[#202430] font-sans">
       <Navbar />
 
-      <div className="w-full max-w-[1200px] mx-auto pt-10 pb-20 px-4">
+      <div className="w-full max-w-[1200px] mx-auto pt-24 pb-20 px-4">
         <div className="flex items-center gap-3 mb-10">
           <button className="px-6 py-1 rounded-full bg-white shadow text-[#202430] border">
             Dashboard

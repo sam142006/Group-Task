@@ -15,7 +15,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOTP from "./pages/VerifyOtp";
 import ResetPassword from "./pages/ResetPassword";
 import JobGiverProfile from "./pages/JobGiverProfile";
-
+import JobGiverHome from "./pages/JobGiverHome.jsx";
+import JobSeekerHome from "./pages/JobSeekerHome.jsx";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -54,6 +55,8 @@ function MainApp() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/chats" element={<Chats />} />
          <Route path="/jobgiver-profile" element={<JobGiverProfile />} />
+         <Route path="/jobseekerhome" element={<JobSeekerHome />} />
+        <Route path="/jobgiverhome" element={<JobGiverHome />} />
       </Routes>
     </>
   );

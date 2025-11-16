@@ -12,14 +12,15 @@ import flagIcon from "../assets/flag.png";
 import arrowDownIcon from "../assets/arrow-down.png";
 import userIcon from "../assets/user.png";
 
-const Navbar = () => {
+const Navbar = ({ onHomeClick, onProfileClick }) => {
   const navigate = useNavigate();
-
-  // get role from localStorage
   const role = localStorage.getItem("role");
 
-  // profile click navigation
   const goToProfile = () => {
+    if (onProfileClick) {
+      onProfileClick();
+      return;
+    }
     if (role === "recruiter") {
       navigate("/recruiter-profile");
     } else {
@@ -48,14 +49,14 @@ const Navbar = () => {
 
       <div className="flex items-center gap-3">
         <button
-          onClick={() => navigate("/")}
-          className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition"
+          onClick={onHomeClick ? onHomeClick : () => navigate("/jobseekerhome")}
+          className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0]"
         >
           <img src={homeIcon} alt="Home" className="w-4 h-4" />
           <span className="text-[#15294B] font-medium font-['Poppins']">Home</span>
         </button>
 
-        <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition relative">
+        <button className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] relative">
           <img src={chatIcon} alt="Chats" className="w-4 h-4" />
           <span className="text-[#15294B] font-medium font-['Poppins']">Chats</span>
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-1 rounded-full">2</span>
@@ -63,7 +64,7 @@ const Navbar = () => {
 
         <button
           onClick={() => navigate("/jobs")}
-          className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0] hover:shadow-md transition"
+          className="flex items-center gap-1 bg-white px-4 py-2 rounded-xl shadow-sm border border-[#E0E0E0]"
         >
           <img src={jobIcon} alt="Jobs" className="w-4 h-4" />
           <span className="text-[#15294B] font-medium font-['Poppins']">Jobs</span>
@@ -78,7 +79,6 @@ const Navbar = () => {
           <img src={arrowDownIcon} alt="Dropdown" className="w-3 h-3 ml-1 opacity-80" />
         </div>
 
-        {/* PROFILE NAVIGATION */}
         <div
           onClick={goToProfile}
           className="bg-[#15294B] w-8 h-8 rounded-md flex items-center justify-center shadow-sm cursor-pointer"
