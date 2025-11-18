@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-
+import Footer from "../components/Footer";
 import bg from "../assets/bg.png";
 import job from "../assets/job.png";
 import user from "../assets/users.png";
@@ -22,6 +22,9 @@ import tcs from "../assets/tcs.png";
 import microsoft from "../assets/microsoft.png";
 import bookmark from "../assets/bookmark.png";
 
+import companies from "../assets/companies.png";
+import arrow from "../assets/arrow.png";
+import phone from "../assets/phone.png";
 export default function JobSeeker() {
   return (
     <div className="bg-[#EBEDF0] min-h-screen w-full font-sans">
@@ -60,8 +63,7 @@ export default function JobSeeker() {
             <option>Design</option>
           </select>
 
-          <button className="bg-[#0D99FF] text-white px-6 py-3 rounded-xl md:w-[20%] w-full font-medium shadow 
-            hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
+          <button className="bg-[#0D99FF] text-white px-6 py-3 rounded-xl md:w-[20%] w-full font-medium shadow hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
             Search Job
           </button>
         </div>
@@ -203,8 +205,7 @@ export default function JobSeeker() {
             </p>
 
             <div className="flex mt-4 gap-3">
-              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm
-                hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
+              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
                 Apply
               </button>
 
@@ -235,8 +236,7 @@ export default function JobSeeker() {
             </p>
 
             <div className="flex mt-4 gap-3">
-              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm
-                hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
+              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
                 Apply
               </button>
 
@@ -267,8 +267,7 @@ export default function JobSeeker() {
             </p>
 
             <div className="flex mt-4 gap-3">
-              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm
-                hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
+              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
                 Apply
               </button>
               <button className="border px-6 py-2 rounded-md text-sm">
@@ -298,8 +297,7 @@ export default function JobSeeker() {
             </p>
 
             <div className="flex mt-4 gap-3">
-              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm
-                hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
+              <button className="bg-[#0D99FF] text-white px-6 py-2 rounded-md text-sm hover:bg-white hover:text-[#0D99FF] hover:border hover:border-[#0D99FF] transition">
                 Apply
               </button>
 
@@ -313,11 +311,65 @@ export default function JobSeeker() {
         </div>
 
         <div className="flex justify-center mt-10">
-          <button className="bg-[#0D1A2D] text-white px-10 py-3 rounded-lg text-lg font-medium">
+          <button className="bg-[#0D1A2D] text-white px-10 py-3 rounded-lg text-lg font-medium hover:opacity-80">
             Find More Jobs
           </button>
         </div>
       </div>
+<div className="w-full bg-[#F4F7FB] py-16 px-8 md:px-16 mt-16">
+
+  <h2 className="text-center text-3xl md:text-4xl font-bold text-[#15294B] mb-10">
+    Testimonials
+  </h2>
+
+  <div className="border border-[#C9D4E0] rounded-xl p-10 flex flex-col md:flex-row justify-between items-center gap-10">
+
+    <div className="w-full md:w-1/2">
+      <h3 className="text-2xl font-bold text-[#15294B] mb-4">
+        What our clients are saying
+      </h3>
+
+      <p className="text-[#4A5568] leading-relaxed mb-6">
+        "I had the privilege of using <span className="font-semibold">NextStep</span> 
+        to search for employment, and it exceeded my expectations. 
+        The platform’s user-friendly features and the vast array of job listings 
+        made my job search a success. I endorse Job Hunt wholeheartedly."
+      </p>
+
+      <p className="font-semibold text-[#15294B]">Julie Roy</p>
+      <p className="text-sm text-gray-500 mb-8">Product Manager</p>
+
+      <div className="flex gap-4">
+        <button className="w-10 h-10 rounded-full border flex justify-center items-center">
+          <img src={arrow} className="w-4 rotate-180" />
+        </button>
+        <button className="w-10 h-10 rounded-full border flex justify-center items-center">
+          <img src={arrow} className="w-4" />
+        </button>
+      </div>
+    </div>
+
+    <div className="w-full md:w-1/2 flex justify-center">
+      <img
+        src={phone}
+        className="w-[300px] md:w-[360px]"
+      />
+    </div>
+  </div>
+</div>
+
+<div className="w-full bg-white py-16">
+  <h2 className="text-center text-2xl md:text-3xl font-semibold text-[#15294B] mb-10">
+    We are trusted by the World’s largest companies
+  </h2>
+
+  <div className="flex justify-center">
+    <img src={companies} className="w-[90%] md:w-[70%]" />
+  </div>
+</div>
+<Footer/>
+      
+     
     </div>
   );
 }

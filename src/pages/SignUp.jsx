@@ -20,68 +20,71 @@ export default function SignUp(){
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async () => {
-    setErrorMsg("");
+  setErrorMsg("");
 
-    if (!full_name || !email || !password || !password2) {
-      setErrorMsg("All fields are required.");
-      return;
-    }
+  if (!full_name || !email || !password || !password2) {
+    setErrorMsg("All fields are required.");
+    return;
+  }
 
-    if (password !== password2) {
-      setErrorMsg("Passwords do not match.");
-      return;
-    }
+  if (password !== password2) {
+    setErrorMsg("Passwords do not match.");
+    return;
+  }
 
-    if (!agree) {
-      setErrorMsg("Please accept the terms and services.");
-      return;
-    }
+  if (!agree) {
+    setErrorMsg("Please accept the terms and services.");
+    return;
+  }
 
-    setLoading(true);
+  setLoading(true);
 
-    try {
-      const response = await fetch(
-        "https://jobseeker-backend-django.onrender.com/auth/signup/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            full_name: full_name,
-            email: email,
-            password: password,
-            password2: password2,
-           
-          })
-        }
-      );
-
-      const data = await response.json();
-      console.log(data);
-
-      if (!response.ok) {
-        setErrorMsg(data.error || data.detail || "Signup failed. Please try again.");
-        setLoading(false);
-        return;
+  try {
+    const response = await fetch(
+      "https://jobseeker-backend-django.onrender.com/auth/signup/",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name,
+          email,
+          password,
+          password2,
+        }),
       }
+    );
 
-      
-      const accessToken = data.token || data.access || data.access_token;
+    const data = await response.json();
+    console.log(data);
 
-      if (accessToken && data.refresh) {
-        localStorage.setItem("token", accessToken);
-        localStorage.setItem("refresh", data.refresh);
-        navigate("/role-selection");
-      } else {
-        setErrorMsg(data.error || data.detail || "Signup succeeded but no tokens were returned.");
-        setLoading(false);
-        return;
-      }
-    } catch {
-      setErrorMsg("Network error. Please try again.");
+    if (!response.ok) {
+      setErrorMsg(data.error || data.detail || "Signup failed. Please try again.");
+      return;
     }
 
+    // TOKEN FIX
+    const accessToken = data.access || data.access_token || data.token;
+    const refreshToken = data.refresh || data.refresh_token;
+
+    if (accessToken && refreshToken) {
+      localStorage.setItem("access", accessToken);
+      localStorage.setItem("refresh", refreshToken);
+
+      console.log("SAVED ACCESS =", accessToken);
+      console.log("SAVED REFRESH =", refreshToken);
+
+      navigate("/role-selection");
+    } else {
+      setErrorMsg("Signup succeeded but server did NOT return tokens.");
+    }
+
+  } catch (error) {
+    console.error(error);
+    setErrorMsg("Something went wrong.");
+  } finally {
     setLoading(false);
-  };
+  }
+};
 
   const handleLoginClick = () => {
     navigate("/login");

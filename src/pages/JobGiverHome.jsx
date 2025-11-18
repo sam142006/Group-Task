@@ -28,12 +28,13 @@ export default function JobGiverHome() {
           <button>📝 Write article</button>
         </div>
 
-        <div className="mt-10 flex justify-between">
-          <button className="px-6 py-2 bg-[#0E224A] text-white rounded-lg">Companies</button>
-          <span className="text-sm">Short by : Top ⬆</span>
+        <div className="flex items-center justify-between mt-8 px-1">
+          <button className="px-6 py-2 bg-[#0E224A] text-white rounded-lg">Your posts</button>
+          <span className="text-[#0E224A] cursor-pointer text-sm">View all</span>
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-6">
+        
           <div className="bg-white rounded-xl shadow p-4">
             <div className="flex items-center gap-3">
               <img src={googleLogo} alt="" className="w-12" />
@@ -81,8 +82,32 @@ export default function JobGiverHome() {
           </div>
         </div>
 
-        <div className="mt-10">
-          <button className="px-6 py-2 bg-[#0E224A] text-white rounded-lg">General</button>
+
+        <div className="mt-12 w-full">
+          <h1 className="text-4xl font-bold">Welcome back, Mayank!</h1>
+          <p className="text-sm text-gray-600 mt-1">
+            Here's what's happening with your job postings today.
+          </p>
+
+          <div className="bg-[#DCEBFF] p-4 rounded-xl mt-5 flex justify-between items-center">
+            <p className="flex items-center gap-2"><span>👥</span>You have 12 new applicants this week</p>
+            <span className="text-[#3766F2] cursor-pointer">Review Applicants</span>
+          </div>
+
+          <div className="bg-[#FFE7C8] p-4 rounded-xl mt-3 flex justify-between items-center">
+            <p className="flex items-center gap-2"><span>⚠️</span>Your 'Frontend Developer' job post is expiring in 2 days</p>
+            <span className="text-[#F78627] cursor-pointer">Extend Post</span>
+          </div>
+
+          <div className="bg-[#D7F8DB] p-4 rounded-xl mt-3 flex justify-between items-center">
+            <p className="flex items-center gap-2"><span>📈</span>Your job posts received 45% more views this week</p>
+            <span className="text-[#078C4B] cursor-pointer">View Analytics</span>
+          </div>
+
+          <div className="bg-[#E7D6FF] p-4 rounded-xl mt-3 flex justify-between items-center">
+            <p className="flex items-center gap-2"><span>💡</span>Based on your recent postings, here are 5 suggested candidates</p>
+            <span className="text-[#6D40F8] cursor-pointer">View Suggestions</span>
+          </div>
         </div>
       </div>
 
