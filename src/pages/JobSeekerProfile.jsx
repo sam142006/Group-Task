@@ -3,15 +3,13 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import pg from "../assets/pg.png"; 
 import { useNavigate } from "react-router-dom";
-
-export default function JobGiverProfile() {
-
+export default function JobSeekerProfile() {
+  
   const navigate = useNavigate();
 
   const handleSubmit = () => {
     navigate("/submit-notification");
   };
-
   return (
     <div className="min-h-screen w-full bg-[#f7f8fa] text-[#1c1c1c] font-sans">
       <Navbar />
@@ -31,86 +29,96 @@ export default function JobGiverProfile() {
           </div>
         </div>
 
-        <h3 className="text-lg font-semibold mb-4">Recruiter Bio</h3>
+        <h3 className="text-lg font-semibold mb-4">Personal Information</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
           <div>
             <label className="text-sm font-medium">
-              Full Name <span className="text-red-500">*</span>
+              Name <span className="text-red-500">*</span>
             </label>
             <input className="w-full border border-gray-300 rounded-lg p-3 mt-1" />
           </div>
 
           <div>
             <label className="text-sm font-medium">
-              Job Title <span className="text-red-500">*</span>
+              Last Name <span className="text-red-500">*</span>
             </label>
             <input className="w-full border border-gray-300 rounded-lg p-3 mt-1" />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          
           <div>
             <label className="text-sm font-medium">
-              Company Name <span className="text-red-500">*</span>
+              Email <span className="text-red-500">*</span>
             </label>
             <input className="w-full border border-gray-300 rounded-lg p-3 mt-1" />
           </div>
 
           <div>
             <label className="text-sm font-medium">
-              Location <span className="text-red-500">*</span>
+              Phone Number <span className="text-red-500">*</span>
             </label>
-            <input className="w-full border border-gray-300 rounded-lg p-3 mt-1" />
+            <input className="w-full border border-gray-300 rounded-lg p-3 mt-1 outline-none" />
           </div>
 
           <div>
             <label className="text-sm font-medium">
-              Contact Email <span className="text-red-500">*</span>
+              Choose Language <span className="text-red-500">*</span>
             </label>
-            <input className="w-full border border-gray-300 rounded-lg p-3 mt-1" />
+            <select className="w-full border border-gray-300 rounded-lg p-3 mt-1">
+              <option>English</option>
+              <option>Hindi</option>
+            </select>
           </div>
+
         </div>
 
-        <h3 className="text-lg font-semibold mt-10 mb-2">Company name + Logo</h3>
+        <h3 className="text-lg font-semibold mt-10 mb-2">Bio</h3>
         <textarea className="w-full border border-gray-300 rounded-lg p-3 h-32" />
 
         <h3 className="text-lg font-semibold mt-10">
-          Bio Description <span className="text-red-500">*</span>
+          Upload CV / Resume <span className="text-red-500">*</span>
         </h3>
+
+        <div className="border border-gray-300 rounded-lg p-4 mt-3 flex items-center gap-3 bg-white">
+          <img src={pg} alt="icon" className="w-5 h-5 opacity-70" />
+          <span className="text-gray-600 text-sm">CV/Resume.Pdf</span>
+        </div>
 
         <textarea className="w-full border border-gray-300 rounded-lg p-3 mt-3 h-16 text-sm" />
 
-        <h3 className="text-lg font-semibold mt-10">Linkedin Profile URL</h3>
+        <h3 className="text-lg font-semibold mt-10">Additional File</h3>
 
-        <div className="border border-gray-300 rounded-lg p-4 mt-3 flex items-center gap-3 bg-[#f7f8fa]">
+        <div className="border border-gray-300 rounded-lg p-4 mt-3 flex items-center gap-3 bg-white">
           <img src={pg} alt="list icon" className="w-6 h-6 opacity-70" />
-          <span className="text-gray-500">Linkedin.com/in/Yourprofile</span>
+          <span className="text-gray-600">Portfolio.Pdf</span>
         </div>
 
-        <textarea
-          className="w-full border border-gray-300 rounded-lg p-3 mt-3 h-12"
-        
-        />
+        <textarea className="w-full border border-gray-300 rounded-lg p-3 mt-3 h-12" />
 
         <h3 className="text-lg font-semibold mt-10">
-          Specialisations <span className="text-red-500">*</span>
+          Add Education <span className="text-red-500">*</span>
         </h3>
 
-        <textarea
-          className="w-full border border-gray-300 rounded-lg p-3 mt-3 h-32"
-          placeholder="Write here..."
-        />
+        <div className="border border-gray-300 rounded-lg p-4 mt-3 flex items-center gap-3 bg-white">
+          <img src={pg} alt="list icon" className="w-6 h-6 opacity-70" />
+          <span className="text-gray-600">Education.Pdf</span>
+        </div>
+
+        <textarea className="w-full border border-gray-300 rounded-lg p-3 mt-3 h-12" />
 
         <h3 className="text-lg font-semibold mt-10">
-          About your company <span className="text-red-500">*</span>
+          Skills <span className="text-red-500">*</span>
         </h3>
+        <textarea rows={4} className="w-full border border-gray-300 rounded-md p-3" />
 
-        <textarea
-          rows={4}
-          className="w-full border border-gray-300 rounded-md p-3"
-          placeholder="Write here..."
-        />
+        <h3 className="text-lg font-semibold mt-10">
+          Add Experience <span className="text-red-500">*</span>
+        </h3>
+        <textarea rows={4} className="w-full border border-gray-300 rounded-md p-3" />
 
         <div className="mt-6 text-sm text-gray-600 space-y-3">
           <label className="flex items-start gap-2">
@@ -125,16 +133,15 @@ export default function JobGiverProfile() {
         </div>
 
         <div className="w-full flex justify-center mt-10 mb-10">
-          <button
-            onClick={handleSubmit}
-            className="bg-[#0e1f40] text-white px-6 py-2 rounded-md hover:bg-[#13284f]"
-          >
-            Submit Application
-          </button>
+             <button
+      onClick={handleSubmit}
+      className="bg-[#0e1f40] text-white px-6 py-2 rounded-md hover:bg-[#13284f]"
+    >
+      Submit Application
+    </button>
         </div>
       </div>
-
-      <Footer />
+      <Footer/>
     </div>
   );
 }

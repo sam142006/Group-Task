@@ -17,17 +17,18 @@ const Navbar = ({ onHomeClick, onProfileClick }) => {
   const role = localStorage.getItem("role");
 
   const goToProfile = () => {
-    if (onProfileClick) {
-      onProfileClick();
-      return;
-    }
+  if (onProfileClick) {
+    onProfileClick();
+    return;
+  }
 
-    if (role === "recruiter") {
-      navigate("/recruiter-profile");
-    } else {
-      navigate("/jobseeker-profile");
-    }
-  };
+  if (role === "recruiter") {
+    navigate("/JobGiverProfile");  
+  } else {
+    navigate("/JobSeekerProfile");     
+  }
+};
+
 
   return (
     <nav className="w-full bg-[#EBEDF0] border-b border-[#D9D9D9] flex items-center justify-between px-5 py-2 shadow-sm">

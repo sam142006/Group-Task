@@ -14,11 +14,15 @@ import Chats from "./pages/chats";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOTP from "./pages/VerifyOtp";
 import ResetPassword from "./pages/ResetPassword";
-import JobGiverProfile from "./pages/JobGiverProfile";
-import JobGiverHome from "./pages/JobGiverHome.jsx";
-import JobSeekerHome from "./pages/JobSeekerHome.jsx";
+
+import JobGiverHome from "./pages/JobGiverHome";
+import JobSeekerHome from "./pages/JobSeekerHome";
 import SeekerJob from "./pages/SeekerJob";
+
+import SeekerSubmitNotification from "./pages/SeekerSubmitNotification";
 import About from "./pages/About";
+import JobSeekerProfile from "./pages/JobSeekerProfile";
+import JobGiverProfile from "./pages/JobGiverProfile";
 
 function App() {
   return (
@@ -39,10 +43,12 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
       
         <Route path="/chats" element={<Chats />} />
-        <Route path="/jobgiver-profile" element={<JobGiverProfile />} />
+        <Route path="/JobGiverProfile" element={<JobGiverProfile />} />
+        <Route path="/JobSeekerProfile" element={<JobSeekerProfile />} />
         <Route path="/jobseekerhome" element={<JobSeekerHome />} />
         <Route path="/jobgiverhome" element={<JobGiverHome />} />
         <Route path="/seekerjob" element={<SeekerJob />} />
+        <Route path="/submit-notification" element={<SeekerSubmitNotification />} />
         <Route path="/about" element={<About />} />
 
       </Routes>
