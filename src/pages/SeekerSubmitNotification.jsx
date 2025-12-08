@@ -58,7 +58,7 @@ export default function SubmitNotification() {
           Check your applications on Recent Activities
         </button>
 
-        <button className="bg-[#0c1e3c] text-white px-10 py-3 rounded-md mt-10">
+        <button className="bg-[#0c1e3c] text-white px-10 py-3 rounded-md mt-10 mb-10">
           Return to a job search
         </button>
       </div>
