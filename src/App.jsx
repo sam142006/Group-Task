@@ -10,7 +10,7 @@ import JobSeeker from "./pages/JobSeeker";
 import JobGiver from "./pages/JobGiver";
 import Jobs from "./pages/Jobs";
 
-import Chats from "./pages/chats";
+import Chats from "./pages/Chats";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOTP from "./pages/VerifyOtp";
 import ResetPassword from "./pages/ResetPassword";
@@ -23,6 +23,8 @@ import SeekerSubmitNotification from "./pages/SeekerSubmitNotification";
 import About from "./pages/About";
 import JobSeekerProfile from "./pages/JobSeekerProfile";
 import JobGiverProfile from "./pages/JobGiverProfile";
+import JobGiverDashboard from "./pages/JobGiverDashboard";
+import JobSeekerDashboard from "./pages/JobSeekerDashboard";
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
       
         <Route path="/chats" element={<Chats />} />
         <Route path="/JobGiverProfile" element={<JobGiverProfile />} />
+        <Route path="/JobGiverDashboard" element={<JobGiverDashboard/>} />
+        <Route path="/JobSeekerDashboard" element={<JobSeekerDashboard/>} />
         <Route path="/JobSeekerProfile" element={<JobSeekerProfile />} />
         <Route path="/jobseekerhome" element={<JobSeekerHome />} />
         <Route path="/jobgiverhome" element={<JobGiverHome />} />

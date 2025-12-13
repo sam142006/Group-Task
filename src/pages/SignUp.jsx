@@ -62,7 +62,6 @@ export default function SignUp(){
       return;
     }
 
-    // TOKEN FIX
     const accessToken = data.access || data.access_token || data.token;
     const refreshToken = data.refresh || data.refresh_token;
 

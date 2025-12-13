@@ -84,7 +84,7 @@ export default function Login() {
           Welcome back, Please enter your details
         </p>
 
-        <div className="w-[430px] bg-[#F6F8FB] p-8 rounded-xl shadow mt-4">
+        <div className="w-[520px] bg-[#F6F8FB] p-8 rounded-xl shadow mt-4">
           <h2 className="text-[#15294B] text-2xl font-semibold text-center mb-5">
             Login
           </h2>

@@ -17,9 +17,13 @@ export default function JobGiverProfile() {
       <Navbar />
 
       <div className="px-6 md:px-16 lg:px-24 py-10">
-        <button className="text-sm bg-[#e9edf5] px-4 py-2 rounded-md text-[#44527e] mb-6">
-          Dashboard
-        </button>
+       <button
+  onClick={() => navigate("/JobGiverDashboard")}
+  className="text-sm bg-[#e9edf5] px-4 py-2 rounded-md text-[#44527e] mb-6"
+>
+  Dashboard
+</button>
+
 
         <div className="w-full flex justify-center mb-10">
           <div className="w-64 h-64 border-2 border-dashed border-gray-300 rounded-xl flex flex-col justify-center items-center text-center p-4">
